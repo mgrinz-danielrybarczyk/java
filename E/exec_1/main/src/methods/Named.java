@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Named {
 
     public static void main(String[] args) {
-     
+     someLogicMethod();
          /*
             1. Przekształć poniższy fragment kodu w metodę, aby dało się jej użyć do wyświetlenia
             10 linii myślników o losowej długości (z przedziału od 10 do 100 znaków)
@@ -19,7 +19,9 @@ public class Named {
             dla którego zostanie wyświetlone tyle gwiazdek, ile słowo ma znaków
 
          */
-		asterisksFromWordGenerator();
+		for (int j = 0; j < 5; j++) {
+			asterisksFromWordGenerator();
+		}
 		
 
      
@@ -31,7 +33,9 @@ public class Named {
             Wykorzystaj metodę 3 razy.
 
          */
-		 valuesGenerator();
+		 for (int j = 0; j < 3; j++) {
+			valuesGenerator();
+		 }	
 
      
          /*
@@ -46,7 +50,9 @@ public class Named {
             Wykorzystaj metodę 3 razy.
 
          */
-		dotsGenerator();
+		 for (int j = 0; j < 3; j++) {
+			dotsGenerator();
+		 }
 
     }
 		public static void minusGenerator() {
@@ -59,23 +65,20 @@ public class Named {
 		}
 		
 		public static void asterisksFromWordGenerator() {
-			int generateReplays = 5;
 			Scanner scanner = new Scanner(System.in);
-			for (int j = 0; j < generateReplays; j++) {
+			
 				System.out.println("Podaj słowo: ");
 				String word = scanner.next();
 				System.out.print(word + ": ");
 				for(int i = 0; i < word.length(); i++) {
 					System.out.print("*");
 				}
-				System.out.println();
-			}
+				System.out.println();		
 		}
 		
 		public static void valuesGenerator() {
 			Random r = new Random();
-			int generateReplays = 3;
-			for (int j = 0; j < 3; j++) {
+		
 				int firstValue = 1 + r.nextInt(99);		 
 				int secondValue = 0;
 			 
@@ -90,13 +93,9 @@ public class Named {
 					currentValue = firstValue + i;
 					System.out.print(currentValue + " ");
 				 }
-				 System.out.println("***");
-			}
 		}
 		
 		public static void dotsGenerator() {
-			int generateReplays = 3;
-			for (int j = 0; j < generateReplays; j++) {
 			 Random r = new Random();
 			 
 			 int dots = 1 + r.nextInt(99);
@@ -104,7 +103,41 @@ public class Named {
 				 System.out.print(".");
 			 }
 			 System.out.println(dots + "%");
-		 }	
 		}
+		
+		
+		public static void someLogicMethod() {
+            String text = "Narzędzia;Wierzchołki;Horyzont;Dym;Tarcza;Szkoła podstawowa;Gra w słowa;Koniequitt;Eukaliptus";
+			
+			String fragment;
+			int separatorIndex = -1;
+			int previousSeparatorIndex = separatorIndex;
+			
+			while (true) {
+				separatorIndex = text.indexOf(";", separatorIndex + 1);
+				if (separatorIndex == -1) {
+					separatorIndex = text.length();
+				}
+				fragment = text.substring(previousSeparatorIndex + 1, separatorIndex);
+				if (fragment.length() <= 5) {
+					System.out.println(fragment + "(" + fragment.length() + ")");
+				} else {
+					String separatedFragment = "";
+					for (int i = 0; i < fragment.length(); i++) {
+						if (i % 5 == 0 && i != 0) {
+							separatedFragment += '-';
+						}
+						char c = fragment.charAt(i);
+						separatedFragment += c;
+					}
+					System.out.println(separatedFragment + "(" + fragment.length() + ")");
+					
+				}
+				previousSeparatorIndex = separatorIndex;
+				if (separatorIndex >= text.length()) {
+					break;
+				}
+			}
+        }
 
 }
