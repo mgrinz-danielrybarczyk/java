@@ -1,5 +1,7 @@
 package methods;
 
+import java.util.Scanner;
+
 public class Parametrized {
 
     public static void main(String[] args) {
@@ -12,11 +14,9 @@ public class Parametrized {
             Wykorzystaj metodę do wyświetlenia popularności języków: Java (15,0%), Python (8,5%) oraz JavaScript (2,7%).
 
          */
-        String language = "Java";
-        int popularity = 150;
 
-        System.out.println(language + ": " + (popularity / 10) + "," + (popularity % 10) + "%");
-     
+			//languagePopularity();
+			//languagePopularityParametrized("Java", 150);
      
          /*
             2. Przekształć poniższy fragment kodu w metodę, aby dało się jej użyć do wyświetlenia
@@ -25,20 +25,11 @@ public class Parametrized {
             Wykorzystaj metodę do wyświetlenia 4 kwadratów o różnych rozmiarach.
 
          */
-        int size = 5;
-        for (int row = 0; row < size; row++) {
-            for (int col = 0; col < size; col++) {
-                if (row == 0 || row == (size - 1)) {
-                    System.out.print("*");
-                } else if (col == 0 || col == (size - 1)) {
-                    System.out.print("*");
-                } else {
-                    System.out.print(" ");
-                }
-            }
-            System.out.println();
-        }
-     
+		/* for(int i = 0; i < 4; i++){
+			squareGenerator();
+		 }
+		*/
+		//squareGeneratorParametrized(50);
          /*
             3. Napisz metodę, która poprosi użytkownika o podanie przeciwieństwa do wskazanego słowa.
             Metoda powinna przyjąć jako parametr słowo do wyświetlenia oraz słowo będące przeciwieństwem
@@ -47,8 +38,15 @@ public class Parametrized {
             Wykorzystaj metodę do uzyskania odpowiedzi dla 4 słów.
 
          */
-     
-     
+		 /*
+		 
+		 for(int i = 0; i < 4; i++){
+			antagonistWord();
+		 }
+		 */
+			
+			//antagonistWordParametrized("Duzy", "Maly");
+			
          /*
             4. Napisz metodę, która wyświetli nagłówek tekstu. Nagłówek powinien mieć ustalony rozmiar,
             np. 100 znaków i składa się z treści nagłówka oraz znaków "estetycznych". Znaki estetyczne,
@@ -68,5 +66,74 @@ public class Parametrized {
          */
 
     }
+		public static void languagePopularity() {
+			Scanner scanner = new Scanner(System.in);
+			System.out.print("Podaj język (Java, Python lub JavaScript): ");
+			String language = scanner.next();
+			System.out.print("Podaj wskaźnik popularności w promilach: ");
+			int popularity = scanner.nextInt();	
+			System.out.println(language + ": " + (popularity / 10) + "," + (popularity % 10) + "%");
+		}
+		
+		public static void languagePopularityParametrized(String language, int popularity) {
+			System.out.println(language + ": " + (popularity / 10) + "," + (popularity % 10) + "%");
+		}
+		
+		public static void squareGenerator() {
+			Scanner scanner = new Scanner(System.in);
+			System.out.print("Podaj rozmiar kwadratu: ");
+			int size = scanner.nextInt();
+			for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
+                if (row == 0 || row == (size - 1)) {
+                    System.out.print("*");
+                } else if (col == 0 || col == (size - 1)) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+				System.out.println();
+			}
+		}
+		
+		public static void squareGeneratorParametrized(int size) {
+			for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
+                if (row == 0 || row == (size - 1)) {
+                    System.out.print("*");
+                } else if (col == 0 || col == (size - 1)) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+				System.out.println();
+			}
+		}
+		
+		public static void antagonistWord() {
+		 String word = "Duzy";
+		 String wordAntagonist = "Maly";
+		 Scanner scanner = new Scanner(System.in);
+		 System.out.print("Podaj słowo przeciwne: ");
+		 String wordUser = scanner.next();
+		 if (wordUser.equals(wordAntagonist)){
+			 System.out.println("Okej jest git");
+		 } else {
+			System.out.println("To nie jest przeciwne słowo");
+		 }
+		}
+		
+		public static void antagonistWordParametrized(String word, String wordUser) {
+		 String wordAntagonist = "Maly";
+		 if (wordUser.equals(wordAntagonist)){
+			 System.out.println("Okej jest git");
+		 } else {
+			System.out.println("To nie jest przeciwne słowo");
+		 }
+		}
+		
+		
 
 }
