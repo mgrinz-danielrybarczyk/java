@@ -29,7 +29,7 @@ public class Parametrized {
 			squareGenerator();
 		 }
 		*/
-		//squareGeneratorParametrized(50);
+		//squareGeneratorParametrized(5);
          /*
             3. Napisz metodę, która poprosi użytkownika o podanie przeciwieństwa do wskazanego słowa.
             Metoda powinna przyjąć jako parametr słowo do wyświetlenia oraz słowo będące przeciwieństwem
@@ -45,7 +45,10 @@ public class Parametrized {
 		 }
 		 */
 			
-			//antagonistWordParametrized("Duzy", "Maly");
+			//askForAWordAntagonist("duży","mały");
+			//askForAWordAntagonist("mokry","suchy");
+			//askForAWordAntagonist("czarny","biały");
+			//askForAWordAntagonist("wysoki","niski");
 			
          /*
             4. Napisz metodę, która wyświetli nagłówek tekstu. Nagłówek powinien mieć ustalony rozmiar,
@@ -64,6 +67,13 @@ public class Parametrized {
             Wykorzystaj metodę do wyświetlenia 3 nagłówków o różnej treści, długości i symolu estetycznym.
 
          */
+		 printHeader(10, "Raz", "*");
+		 printHeader(20, "Dwa", "*");
+		 printHeader(30, "Trzy", "*");
+		 printHeader(40, "Cztery", "*");
+		 printHeader(30, "Pięć", "*");
+		 printHeader(20, "Sześć", "*");
+		 printHeader(10, "Siedem", "*");
 
     }
 		public static void languagePopularity() {
@@ -111,27 +121,35 @@ public class Parametrized {
 				System.out.println();
 			}
 		}
-		
-		public static void antagonistWord() {
-		 String word = "Duzy";
-		 String wordAntagonist = "Maly";
+			
+		public static void askForAWordAntagonist(String wordUser, String wordAntagonist) {
 		 Scanner scanner = new Scanner(System.in);
-		 System.out.print("Podaj słowo przeciwne: ");
-		 String wordUser = scanner.next();
-		 if (wordUser.equals(wordAntagonist)){
+		 String userAnswer = "";
+		 
+		 System.out.println("Podaj przeciwieństwo do słowa '" + wordUser + "' : ");
+		 userAnswer = scanner.next();
+		 
+		 if (userAnswer.equalsIgnoreCase(wordAntagonist)){
 			 System.out.println("Okej jest git");
 		 } else {
 			System.out.println("To nie jest przeciwne słowo");
 		 }
 		}
 		
-		public static void antagonistWordParametrized(String word, String wordUser) {
-		 String wordAntagonist = "Maly";
-		 if (wordUser.equals(wordAntagonist)){
-			 System.out.println("Okej jest git");
-		 } else {
-			System.out.println("To nie jest przeciwne słowo");
-		 }
+		//printHeader(3, "text", "-");
+		
+		public static void printHeader(int length, String headerText, String headerSign) {
+			if(length <= headerText.length() + 4) {
+				System.out.println(headerSign + " " + headerText + " " + headerSign);
+			} else {
+				int signPartLength = (length - headerText.length() - 2)/2;
+				String signPart = "";
+				for (int i = 0; i < signPartLength; i++) {
+					signPart += headerSign;
+				}
+				System.out.println(signPart + " " + headerText + " " + signPart);
+			}
+			
 		}
 		
 		
