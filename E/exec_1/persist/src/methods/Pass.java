@@ -11,7 +11,6 @@ public class Pass {
         showCalculations("-", 50, 15, 10);     // Oczekiwany wynik: 25
         showCalculations("*", 5, 5, 5);        // Oczekiwany wynik: 125
         showCalculations("/", 100, 5, 10);     // Oczekiwany wynik: 2
-		showCalculations("/", 100, 5, 10);     // Oczekiwany wynik: Błąd - nie można dzielić przez 0!
 		showCalculations("@", 100, 5, 10);     // Oczekiwany wynik: Nieprawidłowa zmienna
         // Metoda askQuestion powinna wyświetlić pytanie oraz zestaw odpowiedzi. Numer poprawnej odpowiedzi
         // wskazywany jest przez drugi argument metody. Odpowiedź powinien wybrać użytkownik.
