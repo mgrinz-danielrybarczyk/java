@@ -24,39 +24,48 @@ public class Repair {
         String word1 = tryRandomWord("Entliczek pentliczek czerwony guziczek");
         String word2 = tryRandomWord("Entliczek pentliczek czerwony koszyek");
         String word3 = tryRandomWord("Wpadła bomba do piwnicy");
+		System.out.println(word1);
+		System.out.println(word2);
+		System.out.println(word3);
     }
 
-    public static void multiply(int a, double b) {
+    public static double multiply(double a, double b) {
         double result = a * b;
+		return result;
     }
 
     public static String clearFrom(String text, String trash) {
         String result = "";
         int i = 0;
         do {
-            if (text.substring(0, i + 1).equals(trash)) {
-                result += text.charAt(i);
-                return result;
+            if (!text.substring(i, i + 1).equals(trash)) {
+                result += text.substring(i, i + 1);
             }
-            else {
-                return result;
-            }
+				i++;
         } while (i < text.length());
 
         return result;
     }
 
-    public static void String tryRandomWord(String text) {
+    public static String tryRandomWord(String text) {
         Random random = new Random();
         int begin = random.nextInt(text.length());
-        int end = random.nextInt(text.length());
+        int end = begin + random.nextInt(text.length() - begin);
 
-        if (begin > end) {
-            return "";
-        }
+
         int wordStart = text.substring(0, begin).lastIndexOf(" ");
+		
+		if (wordStart < 0) {
+			wordStart = 0;
+		}
+		
         int wordEnd = text.indexOf(" ", end);
+		
+		if (wordEnd < 0) {
+			wordEnd = text.length();
+		}
 
         String word = text.substring(wordStart + 1, wordEnd);
+		return word;
     }
 }
