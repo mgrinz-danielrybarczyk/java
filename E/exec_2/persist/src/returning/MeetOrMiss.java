@@ -32,15 +32,24 @@ public class MeetOrMiss {
 
         System.out.print("Test : 'timeToMeet(-7, -2, 5, -4) == 6' przeszedł? ");
         pass = (timeToMeet(-7, -2, 5, -4) == 6);
+        System.out.println(pass);        
+		
+		System.out.print("Test : 'timeToMeet(5, -4, -7, -2) == 6' przeszedł? ");
+        pass = (timeToMeet(5, -4, -7, -2) == 6);
         System.out.println(pass);
 
         System.out.print("Test : 'timeToMeet(5, -1, 8, 1) == -1' przeszedł? ");
         pass = (timeToMeet(5, -1, 8, 1) == -1);
         System.out.println(pass);
 
-        System.out.print("Test : 'timeToMeet(5, 1, 8, 1) == -1' przeszedł? ");
-        pass = (timeToMeet(5, 1, 8, 1) == -1);
+        System.out.print("Test : 'timeToMeet(5, 2, 8, 3) == -1' przeszedł? ");
+        pass = (timeToMeet(5, 2, 8, 3) == -1);
         System.out.println(pass);
+		
+		System.out.print("Test : 'timeToMeet(5, 1, 8, 1) == -1' przeszedł? ");
+        pass = (timeToMeet(5, -2, 8, -1) == -1);
+        System.out.println(pass);
+		
     }
 
     /**
@@ -56,7 +65,27 @@ public class MeetOrMiss {
      *
      * @return ilość kroków do wykonania aby się spotkać lub minąć
      */
-    private static int timeToMeet(int firstPosition, int firstSpeed, int secondPostiion, int secondSpeed) {
-        return Integer.MIN_VALUE;
-    }
+    public static int timeToMeet(int firstPosition, int firstSpeed, int secondPosition, int secondSpeed) {
+		int steps = 0;
+		
+		if(firstPosition == secondPosition) return 0;
+		
+		if(firstSpeed == secondSpeed) return -1;
+					
+		if(firstPosition > secondPosition) return timeToMeet(secondPosition, secondSpeed, firstPosition, firstSpeed);
+		
+		if(firstSpeed < 0 && secondSpeed > 0) return -1;
+		
+		if (firstSpeed > 0 && secondSpeed > 0 && secondSpeed > firstSpeed) return -1;
+		
+		if (firstSpeed < 0 && secondSpeed < 0 && secondSpeed > firstSpeed) return -1;
+		
+		
+		while(firstPosition < secondPosition) {
+			firstPosition += firstSpeed;
+			secondPosition += secondSpeed;
+			steps++;
+		}
+		return steps;
+	}
 }
