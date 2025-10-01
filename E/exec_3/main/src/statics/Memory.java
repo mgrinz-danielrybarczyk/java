@@ -21,9 +21,9 @@ import java.util.Scanner;
  */
 public class Memory {
 
-    public static String wordsMemory = "";
-    public static String wordSeparator = ";";
-    public static int currentWordIndex = 0;
+    private static String wordsMemory = "";
+    private static String wordSeparator = ";";
+    private static int currentWordIndex = 0;
 
     public static void main(String[] args) {
 
