@@ -1,5 +1,6 @@
 package statics;
 
+import java.util.Scanner;
 /*
     Przykładowa interakcja z użytkownikiem:
 
@@ -56,14 +57,28 @@ public class Memory {
         Kiedy nie ma kolejnego słowa, to metoda zwraca pusty tekst
      */
     private static String nextWord() {
-        return "";
+		
+		if (currentWordIndex >= wordsMemory.length()) {
+			return ""; // nie ma więcej słów
+		}
+		
+		int separatorIndex = wordsMemory.indexOf(wordSeparator, currentWordIndex);
+		
+		if (separatorIndex == -1) {
+			return ""; // nie ma już separatorów -> brak słów
+		}
+		
+		String word = wordsMemory.substring(currentWordIndex, separatorIndex);
+		currentWordIndex = separatorIndex + 1;
+        return word;
     }
 
     /*
         Metoda odczytuje kolejną linię z konsoli, aby wymusić działanie użytkownika
      */
     private static void waitForEnter() {
-        ;
+		Scanner scanner = new Scanner(System.in);
+		scanner.nextLine();
     }
 
     /*
@@ -71,13 +86,15 @@ public class Memory {
         umieszczany jest symbol separatora
      */
     public static void memorizeWord(String word) {
-        ;
+        wordsMemory += word + wordSeparator;
     }
 
     /*
         Metoda odczytuje pojedyncze słowo z konsoli i je zwraca do dalszego przetwarzania
      */
     public static String getUserWord() {
-        return "";
+		Scanner scanner = new Scanner(System.in);
+		String word = scanner.nextLine();
+        return word;
     }
 }
